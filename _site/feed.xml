@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-14T23:13:42+08:00</updated><id>http://localhost:4000//</id><title type="html">王水军的博客</title><subtitle>主营Android(UI, Framework)，Java, 其他的都是半吊子(React Native, Linux, security, c/c++ ...), 想了解高端的Machine Learing, AI, TensorFlow，但是懒又是零基础
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-14T23:44:35+08:00</updated><id>http://localhost:4000//</id><title type="html">王水军的博客</title><subtitle>主营Android(UI, Framework)，Java, 其他的都是半吊子(React Native, Linux, security, c/c++ ...), 想了解高端的Machine Learing, AI, TensorFlow，但是懒又是零基础
 </subtitle><entry><title type="html">基于Flexbox的布局框架(一)</title><link href="http://localhost:4000/android/ui/2017/01/14/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(-).html" rel="alternate" type="text/html" title="基于Flexbox的布局框架(一)" /><published>2017-01-14T10:34:01+08:00</published><updated>2017-01-14T10:34:01+08:00</updated><id>http://localhost:4000/android/ui/2017/01/14/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(-)</id><content type="html" xml:base="http://localhost:4000/android/ui/2017/01/14/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(-).html">&lt;p&gt;在移动开发过程中，我们常常会碰到以下痛点:&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -24,6 +24,9 @@
 相信背靠Facebook和阿里，而且随着手机性能的不断提升，未来几年真的很有可能会一统三端.&lt;/p&gt;
 
 &lt;p&gt;这个框架主要是为了解决UI展示的问题，兼顾了一定的业务逻辑能力，在实现过程中也受到了React Native, Weex的启发，尤其是Facebook的这篇文章&lt;a href=&quot;https://code.facebook.com/posts/531104390396423/components-for-android-a-declarative-framework-for-efficient-uis/&quot;&gt;components-for-android-a-declarative-framework-for-efficient-uis&lt;/a&gt;，要是Facebook开源了这个框架的话，估计我就直接在它上面改改了。&lt;/p&gt;
+
+&lt;p&gt;这里先给一个整体的架构图:
+&lt;img src=&quot;source/pics/arch.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;后续会分几篇来分别讲述这个框架实现的主要部分:&lt;/p&gt;
 
