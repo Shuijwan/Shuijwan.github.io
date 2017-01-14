@@ -16,7 +16,7 @@
 title: 王水军的博客
 email: flyalizee@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  主营Android(UI, Framework)，Java, 其他的都是半吊子(React Native, Linux, security, c/c++ ...)
+  主营Android(UI, Framework)，Java, 其他的都是半吊子(React Native, Linux, security, c/c++ ...), 想了解高端的Machine Learing, AI, TensorFlow，但是懒又是零基础
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  Shuijwan
