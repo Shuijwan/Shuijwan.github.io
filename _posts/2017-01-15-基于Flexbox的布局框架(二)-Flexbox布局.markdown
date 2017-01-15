@@ -4,51 +4,15 @@ title:  "基于Flexbox的布局框架(二) - Flexbo布局"
 date:   2017-01-15 10:34:01 +0800
 categories: android ui
 ---
-在移动开发过程中，我们常常会碰到以下痛点:
 
->* android与ios两端实现的视觉效果常常不一致，导致视觉走查花费大量时间
->* ui实现过程中，常常需要写很多冗长无聊的代码，很多代码也不能复用，
-当项目复杂到一定程度，随着业务和开发人员的增加，项目也会到达一个不容易维护的状态，代码质量也很难保证
->* 当ui需求变动时，需要重新发版本
 
-这个时候最好是有一个框架能将这些重复的工作给代劳，既提高了开发的效率，也保证了项目的质量.
 
-针对上面提到的问题，相应的，这个框架就需要：
-1. ui的布局两端能统一，两端都遵循同一套标准，甚至能共用同一套布局文件(相应的有一个ios的实现)
-2. ui布局能够支持服务端下发来满足动态性
-3. ui布局必须高效，有native体验
-4. 能够处理基本的动画以及业务逻辑
 
-话说React Native, Weex等跨平台一整套方案应该能很好地解决上述问题，不过感觉目前还是有很多坑要踩，而且貌似在低端机型上性能还是个问题,
-相信背靠Facebook和阿里，而且随着手机性能的不断提升，未来几年真的很有可能会一统三端.
-
-这个框架主要是为了解决UI展示的问题，兼顾了一定的业务逻辑能力，在实现过程中也受到了React Native, Weex的启发，尤其是Facebook的这篇文章[components-for-android-a-declarative-framework-for-efficient-uis][components for android]，要是Facebook开源了这个框架的话，估计我就直接在它上面改改了。
-
-这里先给一个整体的架构图:
-![](https://shuijwan.github.io/source/pics/arch.png)
-
-后续会分几篇来分别讲述这个框架实现的主要部分:
-
-[基于Flexbox的布局框架(二) - Flexbox布局][part2]
-
+上一篇:
+[基于Flexbox的布局框架(一)][part1]
+下一篇:
 [基于Flexbox的布局框架(三) - 异步Layout][part3]
 
-[基于Flexbox的布局框架(四) - 文本渲染][part4]
 
-[基于Flexbox的布局框架(五) - Image渲染][part5]
-
-[基于Flexbox的布局框架(六) - List][part6]
-
-[基于Flexbox的布局框架(七) - 数据绑定][part7]
-
-[基于Flexbox的布局框架(八) - 事件处理][part8]
-
-
-[part2]:http://jekyllrb.com/docs/home
+[part1]:https://shuijwan.github.io/android/ui/2017/01/14/基于Flexbox的布局框架(-).html
 [part3]:http://jekyllrb.com/docs/home
-[part4]:http://jekyllrb.com/docs/home
-[part5]:http://jekyllrb.com/docs/home
-[part6]:http://jekyllrb.com/docs/home
-[part7]:http://jekyllrb.com/docs/home
-[part8]:http://jekyllrb.com/docs/home
-[components for android]:https://code.facebook.com/posts/531104390396423/components-for-android-a-declarative-framework-for-efficient-uis/
