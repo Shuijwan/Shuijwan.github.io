@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>王水军的博客</title>
-  <meta name="description" content="主营Android(UI, Framework)，Java, 其他的都是半吊子(React Native, Linux, security, c/c++ ...), 想了解高端的Machine Learing, AI, TensorFlow，但是懒又是零基础">
+  <title>基于Flexbox的布局框架(二) - Flexbo布局</title>
+  <meta name="description" content="在移动开发过程中，我们常常会碰到以下痛点:">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/android/ui/2017/01/15/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%BA%8C)-Flexbox%E5%B8%83%E5%B1%80.html">
   <link rel="alternate" type="application/rss+xml" title="王水军的博客" href="/feed.xml">
   
   
@@ -58,44 +58,64 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
-  
-  
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">基于Flexbox的布局框架(二) - Flexbo布局</h1>
+    <p class="post-meta"><time datetime="2017-01-15T10:34:01+08:00" itemprop="datePublished">Jan 15, 2017</time></p>
+  </header>
 
+  <div class="post-content" itemprop="articleBody">
+    <p>在移动开发过程中，我们常常会碰到以下痛点:</p>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Jan 15, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/android/ui/2017/01/15/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%BA%8C)-Flexbox%E5%B8%83%E5%B1%80.html">基于Flexbox的布局框架(二) - Flexbo布局</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 14, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/android/ui/2017/01/14/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(-).html">基于Flexbox的布局框架(一)</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 14, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/jekyll/update/2017/01/14/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
+<blockquote>
+  <ul>
+    <li>android与ios两端实现的视觉效果常常不一致，导致视觉走查花费大量时间</li>
+    <li>ui实现过程中，常常需要写很多冗长无聊的代码，很多代码也不能复用，
+当项目复杂到一定程度，随着业务和开发人员的增加，项目也会到达一个不容易维护的状态，代码质量也很难保证</li>
+    <li>当ui需求变动时，需要重新发版本</li>
   </ul>
+</blockquote>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<p>这个时候最好是有一个框架能将这些重复的工作给代劳，既提高了开发的效率，也保证了项目的质量.</p>
 
-</div>
+<p>针对上面提到的问题，相应的，这个框架就需要：</p>
+<ol>
+  <li>ui的布局两端能统一，两端都遵循同一套标准，甚至能共用同一套布局文件(相应的有一个ios的实现)</li>
+  <li>ui布局能够支持服务端下发来满足动态性</li>
+  <li>ui布局必须高效，有native体验</li>
+  <li>能够处理基本的动画以及业务逻辑</li>
+</ol>
+
+<p>话说React Native, Weex等跨平台一整套方案应该能很好地解决上述问题，不过感觉目前还是有很多坑要踩，而且貌似在低端机型上性能还是个问题,
+相信背靠Facebook和阿里，而且随着手机性能的不断提升，未来几年真的很有可能会一统三端.</p>
+
+<p>这个框架主要是为了解决UI展示的问题，兼顾了一定的业务逻辑能力，在实现过程中也受到了React Native, Weex的启发，尤其是Facebook的这篇文章<a href="https://code.facebook.com/posts/531104390396423/components-for-android-a-declarative-framework-for-efficient-uis/">components-for-android-a-declarative-framework-for-efficient-uis</a>，要是Facebook开源了这个框架的话，估计我就直接在它上面改改了。</p>
+
+<p>这里先给一个整体的架构图:
+<img src="https://shuijwan.github.io/source/pics/arch.png" alt="" /></p>
+
+<p>后续会分几篇来分别讲述这个框架实现的主要部分:</p>
+
+<p><a href="http://jekyllrb.com/docs/home">基于Flexbox的布局框架(二) - Flexbox布局</a></p>
+
+<p><a href="http://jekyllrb.com/docs/home">基于Flexbox的布局框架(三) - 异步Layout</a></p>
+
+<p><a href="http://jekyllrb.com/docs/home">基于Flexbox的布局框架(四) - 文本渲染</a></p>
+
+<p><a href="http://jekyllrb.com/docs/home">基于Flexbox的布局框架(五) - Image渲染</a></p>
+
+<p><a href="http://jekyllrb.com/docs/home">基于Flexbox的布局框架(六) - List</a></p>
+
+<p><a href="http://jekyllrb.com/docs/home">基于Flexbox的布局框架(七) - 数据绑定</a></p>
+
+<p><a href="http://jekyllrb.com/docs/home">基于Flexbox的布局框架(八) - 事件处理</a></p>
+
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

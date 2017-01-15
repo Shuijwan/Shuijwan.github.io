@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "基于Flexbox的布局框架(一)"
-date:   2017-01-14 10:34:01 +0800
+title:  "基于Flexbox的布局框架(二) - Flexbo布局"
+date:   2017-01-15 10:34:01 +0800
 categories: android ui
 ---
 在移动开发过程中，我们常常会碰到以下痛点:
@@ -44,7 +44,7 @@ categories: android ui
 [基于Flexbox的布局框架(八) - 事件处理][part8]
 
 
-[part2]:https://shuijwan.github.io/android/ui/2017-01-15-%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%BA%8C)-Flexbo%E5%B8%83%E5%B1%80.html
+[part2]:http://jekyllrb.com/docs/home
 [part3]:http://jekyllrb.com/docs/home
 [part4]:http://jekyllrb.com/docs/home
 [part5]:http://jekyllrb.com/docs/home
