@@ -83,9 +83,56 @@ list滑动的时候跟用RelativeLayout实现的item比起来还是不那么流�
 
 <p>在React-native和Weex中，底层的布局引擎用的都是facebook的<a href="https://github.com/facebook/yoga">css-layout</a>，这是一个跨平台布局引擎，而且最重要的是它是独立的一个引擎，跟各个平台的UI系统没有一丁点关系，这样的话，我们就可以做很多优化，比如在后台线程进行预先layout，等layout完成了再切换到主线程进行渲染，这样就大大提高了性能。最近facebook用c语言重写了css-layout,在不同平台上有对应的wrapper，改名叫yoga，不仅真正实现了不同平台一样的算法，而且性能得到更一部提升。我们这个框架在2.0版本中也进行重构，底层就是采用yoga来进行布局。</p>
 
-<p>yoga中最主要的一个概念就是YogaNode,一个布局就是由各个元素对应的YogaNode组成的树，通过给每个YogaNode设置相应的属性，最终调用YogaNode.calculateLayout，就能得到各个YogaNode的坐标跟宽高，而且引擎做了各种优化来尽量减少不必要的measure。下面是一个github的一个测试用例，感兴趣的可以自己去github或者<a href="https://facebook.github.io/yoga/">官网</a>以及<a href="https://facebook.github.io/yoga/docs/api/java/">java api</a>上看。</p>
+<p>yoga中最主要的一个概念就是YogaNode,一个布局就是由各个元素对应的YogaNode组成的树，通过给每个YogaNode设置相应的属性，最终调用YogaNode.calculateLayout，就能得到各个YogaNode的坐标跟宽高，而且引擎做了各种优化来尽量减少不必要的measure。下面是github上的一些测试用例，感兴趣的可以自己去github或者<a href="https://facebook.github.io/yoga/">官网</a>以及<a href="https://facebook.github.io/yoga/docs/api/java/">java api</a>上看。</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testBaseline</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">final</span> <span class="n">YogaNode</span> <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YogaNode</span><span class="o">();</span>
+    <span class="n">root</span><span class="o">.</span><span class="na">setFlexDirection</span><span class="o">(</span><span class="n">YogaFlexDirection</span><span class="o">.</span><span class="na">ROW</span><span class="o">);</span>
+    <span class="n">root</span><span class="o">.</span><span class="na">setAlignItems</span><span class="o">(</span><span class="n">YogaAlign</span><span class="o">.</span><span class="na">BASELINE</span><span class="o">);</span>
+    <span class="n">root</span><span class="o">.</span><span class="na">setWidth</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+    <span class="n">root</span><span class="o">.</span><span class="na">setHeight</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+
+    <span class="kd">final</span> <span class="n">YogaNode</span> <span class="n">child1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YogaNode</span><span class="o">();</span>
+    <span class="n">child1</span><span class="o">.</span><span class="na">setWidth</span><span class="o">(</span><span class="mi">40</span><span class="o">);</span>
+    <span class="n">child1</span><span class="o">.</span><span class="na">setHeight</span><span class="o">(</span><span class="mi">40</span><span class="o">);</span>
+    <span class="n">root</span><span class="o">.</span><span class="na">addChildAt</span><span class="o">(</span><span class="n">child1</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+
+    <span class="kd">final</span> <span class="n">YogaNode</span> <span class="n">child2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YogaNode</span><span class="o">();</span>
+    <span class="n">child2</span><span class="o">.</span><span class="na">setWidth</span><span class="o">(</span><span class="mi">40</span><span class="o">);</span>
+    <span class="n">child2</span><span class="o">.</span><span class="na">setHeight</span><span class="o">(</span><span class="mi">40</span><span class="o">);</span>
+    <span class="n">child2</span><span class="o">.</span><span class="na">setBaselineFunction</span><span class="o">(</span><span class="k">new</span> <span class="n">YogaBaselineFunction</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">float</span> <span class="nf">baseline</span><span class="o">(</span><span class="n">YogaNodeAPI</span> <span class="n">node</span><span class="o">,</span> <span class="kt">float</span> <span class="n">width</span><span class="o">,</span> <span class="kt">float</span> <span class="n">height</span><span class="o">)</span> <span class="o">{</span>
+          <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">});</span>
+    <span class="n">root</span><span class="o">.</span><span class="na">addChildAt</span><span class="o">(</span><span class="n">child2</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+
+    <span class="n">root</span><span class="o">.</span><span class="na">calculateLayout</span><span class="o">();</span>
+
+    <span class="n">assertEquals</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">child1</span><span class="o">.</span><span class="na">getLayoutY</span><span class="o">());</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="mi">40</span><span class="o">,</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">child2</span><span class="o">.</span><span class="na">getLayoutY</span><span class="o">());</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testLayoutMargin</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">final</span> <span class="n">YogaNode</span> <span class="n">node</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YogaNode</span><span class="o">();</span>
+    <span class="n">node</span><span class="o">.</span><span class="na">setWidth</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+    <span class="n">node</span><span class="o">.</span><span class="na">setHeight</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+    <span class="n">node</span><span class="o">.</span><span class="na">setMargin</span><span class="o">(</span><span class="n">YogaEdge</span><span class="o">.</span><span class="na">START</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="n">node</span><span class="o">.</span><span class="na">setMargin</span><span class="o">(</span><span class="n">YogaEdge</span><span class="o">.</span><span class="na">END</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+    <span class="n">node</span><span class="o">.</span><span class="na">setMargin</span><span class="o">(</span><span class="n">YogaEdge</span><span class="o">.</span><span class="na">TOP</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+    <span class="n">node</span><span class="o">.</span><span class="na">setMargin</span><span class="o">(</span><span class="n">YogaEdge</span><span class="o">.</span><span class="na">BOTTOM</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+    <span class="n">node</span><span class="o">.</span><span class="na">calculateLayout</span><span class="o">();</span>
+
+    <span class="n">assertEquals</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">node</span><span class="o">.</span><span class="na">getLayoutMargin</span><span class="o">(</span><span class="n">YogaEdge</span><span class="o">.</span><span class="na">LEFT</span><span class="o">));</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">node</span><span class="o">.</span><span class="na">getLayoutMargin</span><span class="o">(</span><span class="n">YogaEdge</span><span class="o">.</span><span class="na">RIGHT</span><span class="o">));</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">node</span><span class="o">.</span><span class="na">getLayoutMargin</span><span class="o">(</span><span class="n">YogaEdge</span><span class="o">.</span><span class="na">TOP</span><span class="o">));</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">node</span><span class="o">.</span><span class="na">getLayoutMargin</span><span class="o">(</span><span class="n">YogaEdge</span><span class="o">.</span><span class="na">BOTTOM</span><span class="o">));</span>
+  <span class="o">}</span>
+
+
+<span class="nd">@Test</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testMeasure</span><span class="o">()</span> <span class="o">{</span>
     <span class="kd">final</span> <span class="n">YogaNode</span> <span class="n">node</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YogaNode</span><span class="o">();</span>
     <span class="n">node</span><span class="o">.</span><span class="na">setMeasureFunction</span><span class="o">(</span><span class="k">new</span> <span class="n">YogaMeasureFunction</span><span class="o">()</span> <span class="o">{</span>

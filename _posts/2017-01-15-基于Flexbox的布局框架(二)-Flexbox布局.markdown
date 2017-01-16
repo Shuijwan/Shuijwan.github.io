@@ -19,9 +19,55 @@ list滑动的时候跟用RelativeLayout实现的item比起来还是不那么流�
 
 在React-native和Weex中，底层的布局引擎用的都是facebook的[css-layout][yoga github]，这是一个跨平台布局引擎，而且最重要的是它是独立的一个引擎，跟各个平台的UI系统没有一丁点关系，这样的话，我们就可以做很多优化，比如在后台线程进行预先layout，等layout完成了再切换到主线程进行渲染，这样就大大提高了性能。最近facebook用c语言重写了css-layout,在不同平台上有对应的wrapper，改名叫yoga，不仅真正实现了不同平台一样的算法，而且性能得到更一部提升。我们这个框架在2.0版本中也进行重构，底层就是采用yoga来进行布局。
 
-yoga中最主要的一个概念就是YogaNode,一个布局就是由各个元素对应的YogaNode组成的树，通过给每个YogaNode设置相应的属性，最终调用YogaNode.calculateLayout，就能得到各个YogaNode的坐标跟宽高，而且引擎做了各种优化来尽量减少不必要的measure。下面是一个github的一个测试用例，感兴趣的可以自己去github或者[官网][yoga website]以及[java api][yoga java api]上看。
+yoga中最主要的一个概念就是YogaNode,一个布局就是由各个元素对应的YogaNode组成的树，通过给每个YogaNode设置相应的属性，最终调用YogaNode.calculateLayout，就能得到各个YogaNode的坐标跟宽高，而且引擎做了各种优化来尽量减少不必要的measure。下面是github上的一些测试用例，感兴趣的可以自己去github或者[官网][yoga website]以及[java api][yoga java api]上看。
 
 {% highlight java %}
+@Test
+  public void testBaseline() {
+    final YogaNode root = new YogaNode();
+    root.setFlexDirection(YogaFlexDirection.ROW);
+    root.setAlignItems(YogaAlign.BASELINE);
+    root.setWidth(100);
+    root.setHeight(100);
+
+    final YogaNode child1 = new YogaNode();
+    child1.setWidth(40);
+    child1.setHeight(40);
+    root.addChildAt(child1, 0);
+
+    final YogaNode child2 = new YogaNode();
+    child2.setWidth(40);
+    child2.setHeight(40);
+    child2.setBaselineFunction(new YogaBaselineFunction() {
+        public float baseline(YogaNodeAPI node, float width, float height) {
+          return 0;
+        }
+    });
+    root.addChildAt(child2, 1);
+
+    root.calculateLayout();
+
+    assertEquals(0, (int) child1.getLayoutY());
+    assertEquals(40, (int) child2.getLayoutY());
+  }
+
+  @Test
+  public void testLayoutMargin() {
+    final YogaNode node = new YogaNode();
+    node.setWidth(100);
+    node.setHeight(100);
+    node.setMargin(YogaEdge.START, 1);
+    node.setMargin(YogaEdge.END, 2);
+    node.setMargin(YogaEdge.TOP, 3);
+    node.setMargin(YogaEdge.BOTTOM, 4);
+    node.calculateLayout();
+
+    assertEquals(1, (int) node.getLayoutMargin(YogaEdge.LEFT));
+    assertEquals(2, (int) node.getLayoutMargin(YogaEdge.RIGHT));
+    assertEquals(3, (int) node.getLayoutMargin(YogaEdge.TOP));
+    assertEquals(4, (int) node.getLayoutMargin(YogaEdge.BOTTOM));
+  }
+
 @Test
   public void testMeasure() {
     final YogaNode node = new YogaNode();
