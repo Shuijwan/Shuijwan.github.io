@@ -1,22 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-16T22:28:31+08:00</updated><id>http://localhost:4000//</id><title type="html">王水军的博客</title><subtitle>主营Android(UI, Framework)，Java, 其他的都是半吊子(React Native, Linux, security, c/c++ ...), 想了解高端的Machine Learing, AI, TensorFlow，但是懒又是零基础
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-16T22:36:44+08:00</updated><id>http://localhost:4000//</id><title type="html">王水军的博客</title><subtitle>主营Android(UI, Framework)，Java, 其他的都是半吊子(React Native, Linux, security, c/c++ ...), 想了解高端的Machine Learing, AI, TensorFlow，但是懒又是零基础
 </subtitle><entry><title type="html">基于Flexbox的布局框架(二) - Flexbox布局</title><link href="http://localhost:4000/android/ui/2017/01/15/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%BA%8C)-Flexbox%E5%B8%83%E5%B1%80.html" rel="alternate" type="text/html" title="基于Flexbox的布局框架(二) - Flexbox布局" /><published>2017-01-15T10:34:01+08:00</published><updated>2017-01-15T10:34:01+08:00</updated><id>http://localhost:4000/android/ui/2017/01/15/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%BA%8C)-Flexbox%E5%B8%83%E5%B1%80</id><content type="html" xml:base="http://localhost:4000/android/ui/2017/01/15/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%BA%8C)-Flexbox%E5%B8%83%E5%B1%80.html">&lt;p&gt;上一篇提到了，ios跟android的布局两端需要统一，这就需要一个标准的布局标准. Flexbox布局是w3c提出的用来进行css布局的一套新的方案。
 定义了一套标准在横轴跟纵轴方向排列元素，结合下面的资源看一会就明白了。
 网上有很多文章介绍语法，这里直接列出了网上的一些资源:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;[Flex布局教程：语法篇][http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool]&lt;/li&gt;
-  &lt;li&gt;[Flex布局教程: 实例篇][http://www.ruanyifeng.com/blog/2015/07/flex-examples.html]&lt;/li&gt;
-  &lt;li&gt;[a-visual-guide-to-css3-flexbox-properties][https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties]&lt;/li&gt;
-  &lt;li&gt;[a-guide-to-flexbox][https://css-tricks.com/snippets/css/a-guide-to-flexbox/]&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool&quot;&gt;Flex布局教程：语法篇&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2015/07/flex-examples.html&quot;&gt;Flex布局教程: 实例篇&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties&quot;&gt;a-visual-guide-to-css3-flexbox-properties&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://css-tricks.com/snippets/css/a-guide-to-flexbox/&quot;&gt;a-guide-to-flexbox&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;在Android平台上，google也有一个开源的实现，[flexbox-layout][https://github.com/google/flexbox-layout/]，有5000多个star，看起来很流行的样子。
+&lt;p&gt;在Android平台上，google也有一个开源的实现，&lt;a href=&quot;https://github.com/google/flexbox-layout/&quot;&gt;flexbox-layout&lt;/a&gt;，有5000多个star，看起来很流行的样子。
 在框架实现的第一版中，我就采用了这个layout来作为布局引擎。在使用过程中也发现了挺多问题，尤其是在嵌套比较深的情况(作为list的ItemView时)，会发现性能有点差，
 list滑动的时候跟用RelativeLayout实现的item比起来还是不那么流畅，虽然我自己也做了一些优化，但是考虑到其他因素(过滤器，数据绑定)，最后在2.0版本中还是抛弃了google的这个实现。当然google在开发这个layout的时候，应该也不是为了完全替代其他的layout(它自己的demo中就是跟其他layout混用的)，所以只能说flexbox-layout不适合我们这个场景。&lt;/p&gt;
 
-&lt;p&gt;在React-native和Weex中，底层的布局引擎用的都是facebook的[css-layout][https://github.com/facebook/yoga]，这是一个跨平台布局引擎，而且最重要的是它是独立的一个引擎，跟各个平台的UI系统没有一丁点关系，这样的话，我们就可以做很多优化，比如在后台线程进行预先layout，等layout完成了再切换到主线程进行渲染，这样就大大提高了性能。最近facebook用c语言重写了css-layout,在不同平台上有对应的wrapper，改名叫yoga，不仅真正实现了不同平台一样的算法，而且性能得到更一部提升。我们这个框架在2.0版本中也进行重构，底层就是采用yoga来进行布局。&lt;/p&gt;
+&lt;p&gt;在React-native和Weex中，底层的布局引擎用的都是facebook的&lt;a href=&quot;https://github.com/facebook/yoga&quot;&gt;css-layout&lt;/a&gt;，这是一个跨平台布局引擎，而且最重要的是它是独立的一个引擎，跟各个平台的UI系统没有一丁点关系，这样的话，我们就可以做很多优化，比如在后台线程进行预先layout，等layout完成了再切换到主线程进行渲染，这样就大大提高了性能。最近facebook用c语言重写了css-layout,在不同平台上有对应的wrapper，改名叫yoga，不仅真正实现了不同平台一样的算法，而且性能得到更一部提升。我们这个框架在2.0版本中也进行重构，底层就是采用yoga来进行布局。&lt;/p&gt;
 
-&lt;p&gt;yoga中最主要的一个概念就是YogaNode,一个布局就是由各个元素对应的YogaNode组成的树，通过给每个YogaNode设置相应的属性，最终调用YogaNode.calculateLayout，就能得到各个YogaNode的坐标跟宽高，而且引擎做了各种优化来尽量减少不必要的measure。下面是一个github的一个测试用例，感兴趣的可以自己去github上看。&lt;/p&gt;
+&lt;p&gt;yoga中最主要的一个概念就是YogaNode,一个布局就是由各个元素对应的YogaNode组成的树，通过给每个YogaNode设置相应的属性，最终调用YogaNode.calculateLayout，就能得到各个YogaNode的坐标跟宽高，而且引擎做了各种优化来尽量减少不必要的measure。下面是一个github的一个测试用例，感兴趣的可以自己去github或者&lt;a href=&quot;https://facebook.github.io/yoga/&quot;&gt;官网&lt;/a&gt;以及&lt;a href=&quot;https://facebook.github.io/yoga/docs/api/java/&quot;&gt;java api&lt;/a&gt;上看。&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testMeasure&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
