@@ -91,7 +91,7 @@ yoga中最主要的一个概念就是YogaNode,一个布局就是由各个元素�
 上一篇:
 [基于Flexbox的布局框架(一)][part1]
 下一篇:
-[基于Flexbox的布局框架(三) - 异步Layout][part3]
+[基于Flexbox的布局框架(三) - 异步Layout(Text, Image, List)][part3]
 
 [flexbox语法]:http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool
 [flexbox示例]:http://www.ruanyifeng.com/blog/2015/07/flex-examples.html
@@ -102,4 +102,4 @@ yoga中最主要的一个概念就是YogaNode,一个布局就是由各个元素�
 [yoga website]:https://facebook.github.io/yoga/
 [yoga java api]:https://facebook.github.io/yoga/docs/api/java/
 [part1]:https://shuijwan.github.io/android/ui/2017/01/14/基于Flexbox的布局框架(-).html
-[part3]:http://jekyllrb.com/docs/home
+[part3]:https://shuijwan.github.io/android/ui/2017/01/19/基于Flexbox的布局框架(三)-异步Layout(Text,Image,List).html

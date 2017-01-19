@@ -31,24 +31,12 @@ categories: android ui
 
 [基于Flexbox的布局框架(二) - Flexbox布局][part2]
 
-[基于Flexbox的布局框架(三) - 异步Layout][part3]
+[基于Flexbox的布局框架(三) - 异步Layout(Text, Image, List)][part3]
 
-[基于Flexbox的布局框架(四) - 文本渲染][part4]
-
-[基于Flexbox的布局框架(五) - Image渲染][part5]
-
-[基于Flexbox的布局框架(六) - List][part6]
-
-[基于Flexbox的布局框架(七) - 数据绑定][part7]
-
-[基于Flexbox的布局框架(八) - 事件处理][part8]
+[基于Flexbox的布局框架(四) - 数据绑定，事件处理][part4]
 
 
 [part2]:https://shuijwan.github.io//android/ui/2017/01/15/基于Flexbox的布局框架(二)-Flexbox布局.html
 [part3]:http://jekyllrb.com/docs/home
 [part4]:http://jekyllrb.com/docs/home
-[part5]:http://jekyllrb.com/docs/home
-[part6]:http://jekyllrb.com/docs/home
-[part7]:http://jekyllrb.com/docs/home
-[part8]:http://jekyllrb.com/docs/home
 [components for android]:https://code.facebook.com/posts/531104390396423/components-for-android-a-declarative-framework-for-efficient-uis/
