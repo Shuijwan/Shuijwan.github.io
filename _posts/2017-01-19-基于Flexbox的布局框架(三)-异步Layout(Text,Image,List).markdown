@@ -14,10 +14,13 @@ categories: android ui
 
 下面就分别就上述几个方面针对Text，Image，List如何做优化:
 
-##Layout
+##### Layout
+android里面View的layout过程分为onMeasure -> onLayout -> onDraw，并且都是在主线程中完成，如果View层次比较深，这些计算过程就会耗费比较多的cpu，从而影响性能。
+
+之前提到facebook的yoga是一个独立的layout引擎，因此可以在任何线程执行，如果在List中当要显示某个ItemView时，这个ItemView里的元素都已经设置了最终的坐标与宽高，那么会大大减少在主线程中进行measure和layout的时间。
 
 
-##减少View层级
+##### 减少View层级
 
 
 上一篇:

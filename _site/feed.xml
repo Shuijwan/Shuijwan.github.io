@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-19T22:33:20+08:00</updated><id>http://localhost:4000//</id><title type="html">王水军的博客</title><subtitle>主营Android(UI, Framework)，Java, 其他的都是半吊子(React Native, Linux, security, c/c++ ...), 想了解高端的Machine Learing, AI, TensorFlow，但是懒又是零基础
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-19T22:45:53+08:00</updated><id>http://localhost:4000//</id><title type="html">王水军的博客</title><subtitle>主营Android(UI, Framework)，Java, 其他的都是半吊子(React Native, Linux, security, c/c++ ...), 想了解高端的Machine Learing, AI, TensorFlow，但是懒又是零基础
 </subtitle><entry><title type="html">基于Flexbox的布局框架(三) - 异步Layout(Text, Image, List)</title><link href="http://localhost:4000/android/ui/2017/01/19/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%B8%89)-%E5%BC%82%E6%AD%A5Layout(Text,Image,List).html" rel="alternate" type="text/html" title="基于Flexbox的布局框架(三) - 异步Layout(Text, Image, List)" /><published>2017-01-19T10:34:01+08:00</published><updated>2017-01-19T10:34:01+08:00</updated><id>http://localhost:4000/android/ui/2017/01/19/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%B8%89)-%E5%BC%82%E6%AD%A5Layout(Text,Image,List)</id><content type="html" xml:base="http://localhost:4000/android/ui/2017/01/19/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%B8%89)-%E5%BC%82%E6%AD%A5Layout(Text,Image,List).html">&lt;p&gt;学会了Flexbox布局之后，这篇来看一下在List中如何做异步layout来提高性能。List可以说是android开发过程中碰到的最常用的控件，一个流畅的列表会让用户有愉悦的浏览体验。在Android中做UI优化大概分几个方面:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -15,9 +15,12 @@
 
 &lt;p&gt;下面就分别就上述几个方面针对Text，Image，List如何做优化:&lt;/p&gt;
 
-&lt;p&gt;##Layout&lt;/p&gt;
+&lt;h5 id=&quot;layout&quot;&gt;Layout&lt;/h5&gt;
+&lt;p&gt;android里面View的layout过程分为onMeasure -&amp;gt; onLayout -&amp;gt; onDraw，并且都是在主线程中完成，如果View层次比较深，这些计算过程就会耗费比较多的cpu，从而影响性能。&lt;/p&gt;
 
-&lt;p&gt;##减少View层级&lt;/p&gt;
+&lt;p&gt;之前提到facebook的yoga是一个独立的layout引擎，因此可以在任何线程执行，如果在List中当要显示某个ItemView时，这个ItemView里的元素都已经设置了最终的坐标与宽高，那么会大大减少在主线程中进行measure和layout的时间。&lt;/p&gt;
+
+&lt;h5 id=&quot;减少view层级&quot;&gt;减少View层级&lt;/h5&gt;
 
 &lt;p&gt;上一篇:
 &lt;a href=&quot;https://shuijwan.github.io//android/ui/2017/01/15/基于Flexbox的布局框架(二)-Flexbox布局.html&quot;&gt;基于Flexbox的布局框架(二) - Flexbox布局&lt;/a&gt;

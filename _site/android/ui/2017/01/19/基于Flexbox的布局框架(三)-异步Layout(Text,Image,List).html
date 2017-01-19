@@ -82,9 +82,12 @@
 
 <p>下面就分别就上述几个方面针对Text，Image，List如何做优化:</p>
 
-<p>##Layout</p>
+<h5 id="layout">Layout</h5>
+<p>android里面View的layout过程分为onMeasure -&gt; onLayout -&gt; onDraw，并且都是在主线程中完成，如果View层次比较深，这些计算过程就会耗费比较多的cpu，从而影响性能。</p>
 
-<p>##减少View层级</p>
+<p>之前提到facebook的yoga是一个独立的layout引擎，因此可以在任何线程执行，如果在List中当要显示某个ItemView时，这个ItemView里的元素都已经设置了最终的坐标与宽高，那么会大大减少在主线程中进行measure和layout的时间。</p>
+
+<h5 id="减少view层级">减少View层级</h5>
 
 <p>上一篇:
 <a href="https://shuijwan.github.io//android/ui/2017/01/15/基于Flexbox的布局框架(二)-Flexbox布局.html">基于Flexbox的布局框架(二) - Flexbox布局</a>
