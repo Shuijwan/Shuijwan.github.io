@@ -14,13 +14,18 @@ categories: android ui
 
 下面就分别就上述几个方面针对Text，Image，List如何做优化:
 
-##### Layout
+### Layout
 android里面View的layout过程分为onMeasure -> onLayout -> onDraw，并且都是在主线程中完成，如果View层次比较深，这些计算过程就会耗费比较多的cpu，从而影响性能。
 
 之前提到facebook的yoga是一个独立的layout引擎，因此可以在任何线程执行，如果在List中当要显示某个ItemView时，这个ItemView里的元素都已经设置了最终的坐标与宽高，那么会大大减少在主线程中进行measure和layout的时间。
 
+### List
+我们可以监听List的onScroll回调，从而判断当前的滚动方向，来提前获取数据，给Item的各个元素设置Flexbox属性后，调用YogaoNode.calculateLayout方法来得到这个ItemView各个元素的坐标和大小，方便后续进行onMeasure和onLayout时，可以传固定的数值。
 
-##### 减少View层级
+### Text
+文本与其他控件的区别是，文本的大小是由字体的内容，字体大小，行间距，最大行数等最终确定的。Android里面有一个StaticLayout类就是专门用来计算文本大小的，TextView里面用的也是StaticLayout,因此我们在后台线程计算Text的大小时，可以构造StaticLayout，然后通过getWidth和getHeight得到最终的大小，另外StaticLayout有一个draw方法，因此我们在绘制Text时，可以直接调用StaticLayout.draw(Canvas)方法来直接进行绘制。
+
+### 减少View层级, OverDraw
 
 
 上一篇:
@@ -28,13 +33,6 @@ android里面View的layout过程分为onMeasure -> onLayout -> onDraw，并且�
 下一篇:
 [基于Flexbox的布局框架(四) - 异步Layout(Text, Image, List)][part3]
 
-[flexbox语法]:http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool
-[flexbox示例]:http://www.ruanyifeng.com/blog/2015/07/flex-examples.html
-[flexbox guide]:https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties
-[guide to flexbox]:https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-[flexbox-layout github]:https://github.com/google/flexbox-layout/
-[yoga github]:https://github.com/facebook/yoga
-[yoga website]:https://facebook.github.io/yoga/
-[yoga java api]:https://facebook.github.io/yoga/docs/api/java/
+
 [part1]:https://shuijwan.github.io//android/ui/2017/01/15/基于Flexbox的布局框架(二)-Flexbox布局.html
 [part3]:https://shuijwan.github.io/android/ui/2017/01/19/基于Flexbox的布局框架(三)-异步Layout(Text,Image,List).html
