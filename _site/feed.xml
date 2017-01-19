@@ -1,9 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-19T22:31:39+08:00</updated><id>http://localhost:4000//</id><title type="html">王水军的博客</title><subtitle>主营Android(UI, Framework)，Java, 其他的都是半吊子(React Native, Linux, security, c/c++ ...), 想了解高端的Machine Learing, AI, TensorFlow，但是懒又是零基础
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-19T22:33:20+08:00</updated><id>http://localhost:4000//</id><title type="html">王水军的博客</title><subtitle>主营Android(UI, Framework)，Java, 其他的都是半吊子(React Native, Linux, security, c/c++ ...), 想了解高端的Machine Learing, AI, TensorFlow，但是懒又是零基础
 </subtitle><entry><title type="html">基于Flexbox的布局框架(三) - 异步Layout(Text, Image, List)</title><link href="http://localhost:4000/android/ui/2017/01/19/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%B8%89)-%E5%BC%82%E6%AD%A5Layout(Text,Image,List).html" rel="alternate" type="text/html" title="基于Flexbox的布局框架(三) - 异步Layout(Text, Image, List)" /><published>2017-01-19T10:34:01+08:00</published><updated>2017-01-19T10:34:01+08:00</updated><id>http://localhost:4000/android/ui/2017/01/19/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%B8%89)-%E5%BC%82%E6%AD%A5Layout(Text,Image,List)</id><content type="html" xml:base="http://localhost:4000/android/ui/2017/01/19/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%B8%89)-%E5%BC%82%E6%AD%A5Layout(Text,Image,List).html">&lt;p&gt;学会了Flexbox布局之后，这篇来看一下在List中如何做异步layout来提高性能。List可以说是android开发过程中碰到的最常用的控件，一个流畅的列表会让用户有愉悦的浏览体验。在Android中做UI优化大概分几个方面:&lt;/p&gt;
+
 &lt;ol&gt;
-  &lt;li&gt;减少view层级，减少measure, layout时间&lt;/li&gt;
-  &lt;li&gt;处理overdraw问题&lt;/li&gt;
-  &lt;li&gt;在getView中重用convertView, 用ViewHolder快速查找等等。&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;减少view层级，减少measure, layout时间&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;处理overdraw问题&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在getView中重用convertView, 用ViewHolder快速查找等等。&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;下面就分别就上述几个方面针对Text，Image，List如何做优化:&lt;/p&gt;
@@ -15,11 +22,7 @@
 &lt;p&gt;上一篇:
 &lt;a href=&quot;https://shuijwan.github.io//android/ui/2017/01/15/基于Flexbox的布局框架(二)-Flexbox布局.html&quot;&gt;基于Flexbox的布局框架(二) - Flexbox布局&lt;/a&gt;
 下一篇:
-&lt;a href=&quot;https://shuijwan.github.io/android/ui/2017/01/19/基于Flexbox的布局框架(三)-异步Layout(Text,Image,List).html&quot;&gt;基于Flexbox的布局框架(四) - 异步Layout(Text, Image, List)&lt;/a&gt;&lt;/p&gt;</content><summary type="html">学会了Flexbox布局之后，这篇来看一下在List中如何做异步layout来提高性能。List可以说是android开发过程中碰到的最常用的控件，一个流畅的列表会让用户有愉悦的浏览体验。在Android中做UI优化大概分几个方面:
-
-  减少view层级，减少measure, layout时间
-  处理overdraw问题
-  在getView中重用convertView, 用ViewHolder快速查找等等。</summary></entry><entry><title type="html">基于Flexbox的布局框架(二) - Flexbox布局</title><link href="http://localhost:4000/android/ui/2017/01/15/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%BA%8C)-Flexbox%E5%B8%83%E5%B1%80.html" rel="alternate" type="text/html" title="基于Flexbox的布局框架(二) - Flexbox布局" /><published>2017-01-15T10:34:01+08:00</published><updated>2017-01-15T10:34:01+08:00</updated><id>http://localhost:4000/android/ui/2017/01/15/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%BA%8C)-Flexbox%E5%B8%83%E5%B1%80</id><content type="html" xml:base="http://localhost:4000/android/ui/2017/01/15/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%BA%8C)-Flexbox%E5%B8%83%E5%B1%80.html">&lt;p&gt;上一篇提到了，ios跟android的布局两端需要统一，这就需要一个标准的布局标准. Flexbox布局是w3c提出的用来进行css布局的一套新的方案。
+&lt;a href=&quot;https://shuijwan.github.io/android/ui/2017/01/19/基于Flexbox的布局框架(三)-异步Layout(Text,Image,List).html&quot;&gt;基于Flexbox的布局框架(四) - 异步Layout(Text, Image, List)&lt;/a&gt;&lt;/p&gt;</content><summary type="html">学会了Flexbox布局之后，这篇来看一下在List中如何做异步layout来提高性能。List可以说是android开发过程中碰到的最常用的控件，一个流畅的列表会让用户有愉悦的浏览体验。在Android中做UI优化大概分几个方面:</summary></entry><entry><title type="html">基于Flexbox的布局框架(二) - Flexbox布局</title><link href="http://localhost:4000/android/ui/2017/01/15/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%BA%8C)-Flexbox%E5%B8%83%E5%B1%80.html" rel="alternate" type="text/html" title="基于Flexbox的布局框架(二) - Flexbox布局" /><published>2017-01-15T10:34:01+08:00</published><updated>2017-01-15T10:34:01+08:00</updated><id>http://localhost:4000/android/ui/2017/01/15/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%BA%8C)-Flexbox%E5%B8%83%E5%B1%80</id><content type="html" xml:base="http://localhost:4000/android/ui/2017/01/15/%E5%9F%BA%E4%BA%8EFlexbox%E7%9A%84%E5%B8%83%E5%B1%80%E6%A1%86%E6%9E%B6(%E4%BA%8C)-Flexbox%E5%B8%83%E5%B1%80.html">&lt;p&gt;上一篇提到了，ios跟android的布局两端需要统一，这就需要一个标准的布局标准. Flexbox布局是w3c提出的用来进行css布局的一套新的方案。
 定义了一套标准在横轴跟纵轴方向排列元素，结合下面的资源看一会就明白了。
 网上有很多文章介绍语法，这里直接列出了网上的一些资源:&lt;/p&gt;
 
@@ -121,11 +124,20 @@ list滑动的时候跟用RelativeLayout实现的item比起来还是不那么流�
 &lt;p&gt;这个时候最好是有一个框架能将这些重复的工作给代劳，既提高了开发的效率，也保证了项目的质量.&lt;/p&gt;
 
 &lt;p&gt;针对上面提到的问题，相应的，这个框架就需要：&lt;/p&gt;
+
 &lt;ol&gt;
-  &lt;li&gt;ui的布局两端能统一，两端都遵循同一套标准，甚至能共用同一套布局文件(相应的有一个ios的实现)&lt;/li&gt;
-  &lt;li&gt;ui布局能够支持服务端下发来满足动态性&lt;/li&gt;
-  &lt;li&gt;ui布局必须高效，有native体验&lt;/li&gt;
-  &lt;li&gt;能够处理基本的动画以及业务逻辑&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;ui的布局两端能统一，两端都遵循同一套标准，甚至能共用同一套布局文件(相应的有一个ios的实现)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;ui布局能够支持服务端下发来满足动态性&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;ui布局必须高效，有native体验&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;能够处理基本的动画以及业务逻辑&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;话说React Native, Weex等跨平台一整套方案应该能很好地解决上述问题，不过感觉目前还是有很多坑要踩，而且貌似在低端机型上性能还是个问题,
