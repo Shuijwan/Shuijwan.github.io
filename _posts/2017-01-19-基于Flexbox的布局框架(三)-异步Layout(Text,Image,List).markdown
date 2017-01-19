@@ -19,13 +19,14 @@ android里面View的layout过程分为onMeasure -> onLayout -> onDraw，并且�
 
 之前提到facebook的yoga是一个独立的layout引擎，因此可以在任何线程执行，如果在List中当要显示某个ItemView时，这个ItemView里的元素都已经设置了最终的坐标与宽高，那么会大大减少在主线程中进行measure和layout的时间。
 
-### List
-我们可以监听List的onScroll回调，从而判断当前的滚动方向，来提前获取数据，给Item的各个元素设置Flexbox属性后，调用YogaoNode.calculateLayout方法来得到这个ItemView各个元素的坐标和大小，方便后续进行onMeasure和onLayout时，可以传固定的数值。
+#### [List]
+我们可以监听List的onScroll回调，从而判断当前的滚动方向，在后台线程中提前获取数据，给Item的各个元素设置Flexbox属性后，调用YogaoNode.calculateLayout方法来得到这个ItemView各个元素的坐标和大小，然后存放在缓存中，后续getView的时候就可以直接从缓存中获取，convertView在onMeasure和onLayout时，可以传固定的数值。
 
-### Text
+#### [Text]
 文本与其他控件的区别是，文本的大小是由字体的内容，字体大小，行间距，最大行数等最终确定的。Android里面有一个StaticLayout类就是专门用来计算文本大小的，TextView里面用的也是StaticLayout,因此我们在后台线程计算Text的大小时，可以构造StaticLayout，然后通过getWidth和getHeight得到最终的大小，另外StaticLayout有一个draw方法，因此我们在绘制Text时，可以直接调用StaticLayout.draw(Canvas)方法来直接进行绘制。
 
-### 减少View层级, OverDraw
+### 减少View层级
+因为我们事先已经能知道各个元素的坐标与大小，如果某个控件没有绑定onClick,onTouch等事件，那么我们创建控件的时候，就可以将View转变为Drawable，然后将Drawable绘制到父View上，这样就可以减少View的层次，当然这样也有一个副作用，就是失去了Accessibility,比如不能进行文本的复制。
 
 
 上一篇:
